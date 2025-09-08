@@ -1,5 +1,5 @@
 {
-  "name": "astro-blog",
+  "name": "blog",
   "compatibility_date": "2025-09-08",
   "assets": {
     "directory": "./dist"
