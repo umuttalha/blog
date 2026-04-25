@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog: Umut Talha</title>
+    <style>
+:root {
+	--bg-color: #121212;
+	--text-color: #e0e0e0;
+	--link-color: #8ab4f8;
+	--blockquote-border: #333;
+	--hr-color: #333;
+}
+
+[data-theme="light"] {
+	--bg-color: #fff;
+	--text-color: #333;
+	--link-color: blue;
+	--blockquote-border: #eee;
+	--hr-color: lightgray;
+}
+
+body {
+	background-color: var(--bg-color);
+	color: var(--text-color);
+}
+
+a {
+	color: var(--link-color);
+}
+
+h1, h2 {
+	font-family: sans-serif;
+}
+
+pre {
+	overflow-x: auto;
+}
+
+blockquote {
+	margin: 10px;
+	border-left: 3px solid var(--blockquote-border);
+	padding-left: 15px;
+	color: var(--text-color);
+}
+
+@media screen and (min-width: 15cm) {
+	body {
+		max-width: 18cm;
+		padding-left: 8mm;
+		padding-right: 8mm;
+	}
+}
+
+hr {
+	border: none;
+	height: 1px;
+	background-color: var(--hr-color);
+	margin-top: 5mm;
+	margin-bottom: 8mm;
+}
+
+.entrylink {
+	display: block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.datelink {
+	padding-left: 1em;
+	color: var(--link-color);
+	font-style: italic;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.vote {
+	float: right;
+}
+
+#theme-toggle {
+	background: none;
+	border: 1px solid var(--text-color);
+	color: var(--text-color);
+	padding: 5px 10px;
+	cursor: pointer;
+	border-radius: 4px;
+	font-family: sans-serif;
+	font-size: 0.9em;
+}
+.header-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 1em;
+}
+.header-container h1 {
+	margin: 0;
+}
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <h1>Blog: Umut Talha</h1>
+        <button id="theme-toggle">Light Mode</button>
+    </div>
+
+    <p><a class="datelink" href="entrepreneurship-is-hard.html">2026-04-25</a> entrepreneurship is hard</p>
+
+    <hr/>
+    <div style="font-family: monospace;">
+        <a href="index.html">Index</a><br>
+        <a href="https://github.com/umuttalha">github.com/umuttalha</a><br>
+        umuttalha@example.com
+    </div>
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        toggleBtn.textContent = currentTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+
+        toggleBtn.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            let newTheme = theme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            toggleBtn.textContent = newTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+        });
+    </script>
+</body>
+</html>
