@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>entrepreneurship is hard</title>
+    <title>just moving data around</title>
     <link rel="alternate" type="application/rss+xml" title="Blog RSS Feed" href="rss.xml">
     <style>
 :root {
@@ -107,8 +107,8 @@ hr {
 <body>
     <div>
         <div class="header-container">
-            <h1>entrepreneurship is hard</h1>
-            <button id="theme-toggle">light Mode</button>
+            <h1>just moving data around</h1>
+            <button id="theme-toggle">light mode</button>
         </div>
         <p><em>2026-04-25</em></p>
         <p>i have been building side projects for 6 years. before i knew how to code, i had an idea: there was one government site that showed which colleges students from specific high schools went to. but there was not a reverse one; high schools where they went to college. even the school administration didn't know where their students went. how about taking these and saving them somewhere and searching based on high schools, not colleges. and i built this in 2.5 months with flask, html, sqlite and published it. scraped data with selenium and saved to sqlite i mean. (at that time i didn't know ssr or spa stuff and i realized 1 year later i could scrape by literally making requests and parsing html). published on godaddy with a cpanel 512mb ram server by watching tutorials. after i launched, in a couple of months there was high school selection day and i got 1k visitors per day on some days. and this was mindblowing. i did something and unknown people visit my website, spend 5 minutes and analyze high schools. that made me realize i will be a builder.</p>
@@ -142,7 +142,7 @@ hr {
 
         <p>but after realizing i don't need to query 1 billion of them because my texts are 50% duplicate and actually texts are too similar to each other, and at my project i don't need the exact most similar text, i need more like a count of topics. you can see there is no application layer on my mind, i was just thinking to build a data layer that can be compatible with every application layer. i created 1 million data points with a custom script using faiss etc. then, i took the most related texts for these 1 million topics and sent them to a local 7b llm i rented on runpod to label them. so i made a cluster of about 1 million endpoints at any db you can use. after each query, i created embeddings for all of them, made clusters around them, 1 million clusters. created a faiss index and for labeling. and make it like all text will be hashed. if a new text has this old hash, do not run embedding and take the label directly. there are no recreating labels because there are 1 million different labels, i make queries to clickhouse with a batch of 10k of them over some time. until this i still had zero continuous data fetches.</p>
 
-        <p>i made this. rented t3a.nano nanos at aws with 10 different regions with rotating ipv6 fleets. what i said, the scraper code was nodejs. this nodejs one had like 5k github stars. after claude gave me 100 dollars credit. i thought,</p>
+        <p>i made this. rented t3a.nano's at aws with 10 different regions with rotating ipv6 fleets. what i said, the scraper code was nodejs. this nodejs one had like 5k github stars. after claude gave me 100 dollars credit. i thought,</p>
 
         <p>"how about making these libraries rewritten in rust."</p>
         
@@ -152,7 +152,7 @@ hr {
 
         <p>at another server (this is a microservice bro) postgres and rabbitmq (because it supports prioritization queues) which nats or kafka i think do not support. rabbitmq and postgres connect with rust scrap. read data from rabbitmq and do something about data like check data hashes are there same texts, we don't need to create embeddings. if not there, then save it to a local .bin file with zip and a cron job pushes this to r2. another cron job triggers a runpod gpu server every 12 hours, reads these data from r2 and creates embeddings and labels and pushes to r2 again and another cron job reads from r2 and pushes to kafka and clickhouse to save all data. you can understand there are moving a lot of parts which is bad practice i think and debugging hell. probably i should have used upstash workflows or something like that. as you guys understand i don't have a 7/24 gpu server running because of money and running clickhouse mounted with a hetzner storage box with juicefs for making minimal storage cost.</p>
 
-        <p>and started working. and boom. i thought i will have an aws bill like 100 dollars via computational like i rented vcpu ram and ebs maybe. but i had like a 300 dollar bill. while i had 0 free credits. and i realized i scrape tb's of data fetches, gzip these and push to rabbitmq, but still data egress is expensive because i rent bare metal and vps at hetzner. 1 for the scraping microservice, one for clickhouse+redpanda, one for the app backend layer. i thought for like 1 week how can i reduce this, i ask llm and 3 of them (gpt, claude, gemini) said decrease worker count :D move to another provider, but nothing. and i asked llm this important question. are there any services that have free tier data egress. and boom. lightsail and cdn stuff. cdn has problems about after 1tb this takes too much cost. i went with lightsail. all regional workers connect to that region's lightsail and lightsail pushes data to my backend. there became less cost but still based on https working, some tcp connection stuff, i had data egress but i reduced it by 80%. at that time the system was running for 2 months and building the application layer.</p>
+        <p>and started working. and boom. i thought i will have an aws bill like 100 dollars via computing like i rented vcpu ram and ebs maybe. but i had like a 300 dollar bill. while i had 0 free credits. and i realized i scrape tb's of data fetches, gzip these and push to rabbitmq, but still data egress is expensive because i rent bare metal and vps at hetzner. 1 for the scraping microservice, one for clickhouse+redpanda, one for the app backend layer. i thought for like 1 week how can i reduce this, i ask llm and 3 of them (gpt, claude, gemini) said decrease worker count :D move to another provider, but nothing. and i asked llm this important question. are there any services that have free tier data egress. and boom. lightsail and cdn stuff. cdn has problems about after 1tb this takes too much cost. i went with lightsail. all regional workers connect to that region's lightsail and lightsail pushes data to my backend. there became less cost but still based on https working, some tcp connection stuff, i had data egress but i reduced it by 80%. at that time the system was running for 2 months and building the application layer.</p>
 
         <p>****</p>
 
@@ -162,7 +162,7 @@ hr {
             <li>what query do i need to run</li>
             <li>bro you can search everything like this data time series semantic way</li>
             <li>……</li>
-            <li>…..</li>
+            <li>……</li>
             <li>do you have any in your mind</li>
         </ul>
 
@@ -174,7 +174,7 @@ hr {
 
         <p>i will go find a job. being a solopreneur, while my friends don't understand what i am doing and i can't discuss what i'm doing, is depressive. sometimes speaking to an llm to see if i am on a good or bad path. what am i doing? i can't validate my technical abilities or know if i am on a good path, a seniorless path. learning by doing without seeing any senior infra project. and you can see there. being with no code knowledge and no prior experience i made a website. making 1k visitors per day. with years of experience still my most successful project is my first project. i think business people are okay, they are not useless i learned that.</p>
 
-        <p>when i zone out, it feels like i'm just repeating the same thing over and over: just moving data around from one place to another. but when you look at it, 99% of software is actually just that.</p>
+        <p>when i zone out, it feels like i'm just repeating the same thing over and over: just moving data around from one place to another. but when you look at it, 90% of software is actually just that.</p>
 
     </div>
     <hr/>
@@ -187,14 +187,14 @@ hr {
         const toggleBtn = document.getElementById('theme-toggle');
         const currentTheme = localStorage.getItem('theme') || 'dark';
         document.documentElement.setAttribute('data-theme', currentTheme);
-        toggleBtn.textContent = currentTheme === 'dark' ? 'light Mode' : 'dark Mode';
+        toggleBtn.textContent = currentTheme === 'dark' ? 'light mode' : 'dark mode';
 
         toggleBtn.addEventListener('click', () => {
             let theme = document.documentElement.getAttribute('data-theme');
             let newTheme = theme === 'dark' ? 'light' : 'dark';
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
-            toggleBtn.textContent = newTheme === 'dark' ? 'light Mode' : 'dark Mode';
+            toggleBtn.textContent = newTheme === 'dark' ? 'light mode' : 'dark mode';
         });
     </script>
 </body>

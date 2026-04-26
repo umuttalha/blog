@@ -107,10 +107,10 @@ hr {
 <body>
     <div class="header-container">
         <h1>Blog: Umut Talha</h1>
-        <button id="theme-toggle">Light Mode</button>
+        <button id="theme-toggle">light mode</button>
     </div>
 
-    <p><a class="datelink" href="entrepreneurship-is-hard.html">2026-04-25</a> entrepreneurship is hard</p>
+    <p>2026-04-25 <a href="just-moving-data-around.html">just moving data around</a></p>
 
     <hr/>
     <div style="font-family: monospace;">
@@ -122,14 +122,14 @@ hr {
         const toggleBtn = document.getElementById('theme-toggle');
         const currentTheme = localStorage.getItem('theme') || 'dark';
         document.documentElement.setAttribute('data-theme', currentTheme);
-        toggleBtn.textContent = currentTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+        toggleBtn.textContent = currentTheme === 'dark' ? 'light mode' : 'dark mode';
 
         toggleBtn.addEventListener('click', () => {
             let theme = document.documentElement.getAttribute('data-theme');
             let newTheme = theme === 'dark' ? 'light' : 'dark';
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
-            toggleBtn.textContent = newTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+            toggleBtn.textContent = newTheme === 'dark' ? 'light mode' : 'dark mode';
         });
     </script>
 </body>

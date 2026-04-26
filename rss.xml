@@ -6,11 +6,11 @@
     <description>Umut Talha's personal blog</description>
     <atom:link href="https://umut.space/rss.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>entrepreneurship is hard</title>
-      <link>https://umut.space/entrepreneurship-is-hard.html</link>
+      <title>just moving data around</title>
+      <link>https://umut.space/just-moving-data-around.html</link>
       <description>Reflecting on a 6-year journey of side projects, complex data pipelines, and learning the hard realities of the SaaS business model.</description>
       <pubDate>Sat, 25 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>https://umut.space/entrepreneurship-is-hard.html</guid>
+      <guid>https://umut.space/just-moving-data-around.html</guid>
     </item>
   </channel>
 </rss>
